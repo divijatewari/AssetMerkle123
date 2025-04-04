@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest - Grow Your Green Lifestyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --secondary: #8BC34A;
+            --accent: #FFC107;
+            --dark: #2E7D32;
+            --light: #F1F8E9;
+            --text: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--dark);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+            font-weight: bold;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .sidebar {
+            background-color: var(--white);
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-menu li a {
+            display: flex;
+            align-items: center;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu li a:hover, .sidebar-menu li a.active {
+            background-color: var(--light);
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .sidebar-menu li a i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .main-content {
+            padding: 2rem;
+            background-color: var(--white);
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-banner::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .welcome-banner::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: 20px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .welcome-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .welcome-text p {
+            opacity: 0.9;
+            max-width: 70%;
+        }
+        
+        .pet-plant {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .plant-emoji {
+            font-size: 100px;
+            line-height: 1;
+            transition: all 0.5s ease;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .plant-name {
+            background-color: var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .card-header h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .progress-container {
+            background-color: var(--light);
+            height: 10px;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+            height: 100%;
+            border-radius: 5px;
+            width: 65%;
+        }
+        
+        .eco-points {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .streak-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light);
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .streak-counter i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .badge {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        
+        .badge::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .badge:hover::after {
+            opacity: 1;
+        }
+        
+        .tasks-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tasks-header h2 {
+            color: var(--primary);
+        }
+        
+        .task-categories {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .task-item:hover {
+            background-color: var(--light);
+        }
+        
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 1rem;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .task-info {
+            flex-grow: 1;
+        }
+        
+        .task-points {
+            background-color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .leaderboard {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        
+        .leaderboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .leaderboard-header h2 {
+            color: var(--primary);
+        }
+        
+        .leaderboard-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .leaderboard-list {
+            list-style: none;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .rank {
+            width: 30px;
+            height: 30px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+        
+        .rank-1 {
+            background-color: gold;
+        }
+        
+        .rank-2 {
+            background-color: silver;
+        }
+        
+        .rank-3 {
+            background-color: #cd7f32;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        
+        .user-avatar-sm {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--white);
+        }
+        
+        .user-points {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .challenges-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .challenge-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-image {
+            height: 120px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .challenge-details {
+            padding: 1.2rem;
+        }
+        
+        .challenge-details h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .challenge-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .participants {
+            display: flex;
+            align-items: center;
+        }
+        
+        .participant-avatars {
+            display: flex;
+            margin-right: 0.5rem;
+        }
+        
+        .participant-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 2px solid var(--white);
+            margin-left: -5px;
+        }
+        
+        .participant-avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .join-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .join-btn:hover {
+            background-color: var(--dark);
+        }
+        
+        .joined {
+            background-color: var(--dark);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animation for the plant growth */
+        @keyframes grow {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .growing {
+            animation: grow 0.5s ease;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .welcome-text p {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .welcome-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .pet-plant {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span style="font-size: 1.5em;">🌍</span>
+            EcoQuest
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#" id="nav-challenges">Challenges</a></li>
+                <li><a href="#" id="nav-community">Community</a></li>
+                <li><a href="#" id="nav-learn">Learn</a></li>
+                <li><a href="#" id="nav-marketplace">Marketplace</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <span>Hi, Green Warrior!</span>
+            <div class="user-avatar">GW</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" id="side-dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" id="side-targets"><i class="fas fa-tasks"></i> Daily Targets</a></li>
+                <li><a href="#" id="side-carbon"><i class="fas fa-leaf"></i> Carbon Tracker</a></li>
+                <li><a href="#" id="side-leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                <li><a href="#" id="side-achievements"><i class="fas fa-medal"></i> Achievements</a></li>
+                <li><a href="#" id="side-community"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="#" id="side-tips"><i class="fas fa-book"></i> Eco Tips</a></li>
+                <li><a href="#" id="side-marketplace"><i class="fas fa-store"></i> Marketplace</a></li>
+                <li><a href="#" id="side-settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h1>Welcome back, Eco Warrior!</h1>
+                    <p>Complete your daily eco-tasks to grow your plant and help save the planet!</p>
+                </div>
+                <div class="pet-plant">
+                    <div id="plant-emoji" class="plant-emoji growing">🌱</div>
+                    <div id="plant-name" class="plant-name">Sprouty</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Eco Points</h3>
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="eco-points">1,245</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 45%;"></div>
+                    </div>
+                    <p>45% to next level</p>
+                    <div class="streak-counter">
+                        <i class="fas fa-fire"></i>
+                        <span>7-day streak!</span>
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Carbon Saved</h3>
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="eco-points">124 kg</div>
+                    <p>That's like planting 5 trees!</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 30%;"></div>
+                    </div>
+                    <p>30% to monthly goal</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Your Badges</h3>
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="badges-container">
+                        <div class="badge" data-tooltip="Plastic Free Week"><i class="fas fa-ban"></i></div>
+                        <div class="badge" data-tooltip="Green Commuter"><i class="fas fa-bicycle"></i></div>
+                        <div class="badge" data-tooltip="Energy Saver"><i class="fas fa-bolt"></i></div>
+                        <div class="badge" data-tooltip="Water Guardian"><i class="fas fa-tint"></i></div>
+                    </div>
+                    <p>You've earned 4 badges so far!</p>
+                    <button style="width: 100%; margin-top: 1rem;" class="join-btn" id="view-badges">View All</button>
+                </div>
+            </div>
+            
+            <div class="tasks-container">
+                <div class="tasks-header">
+                    <h2>Today's Eco-Tasks</h2>
+                    <span id="tasks-completed-message">Complete 3 more to grow your plant!</span>
+                </div>
+                
+                <div class="task-categories">
+                    <button class="category-btn active">All</button>
+                    <button class="category-btn">Home</button>
+                    <button class="category-btn">Transport</button>
+                    <button class="category-btn">Food</button>
+                    <button class="category-btn">Shopping</button>
+                </div>
+                
+                <ul class="task-list">
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-info">
+                            <h4>Use a reusable water bottle</h4>
+                            <p>Save 3 plastic bottles today</p>
+                        </div>
+                        <div class="task-points">+15</div>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox" checked>
+                        <div class="task-info">
+                            <h4>Walk or bike to work</h4>
+                            <p>Reduce your carbon footprint</p>
+                        </div>
+                        <div class="task-points">+25</div>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-info">
+                            <h4>Meat-free meal</h4>
+                            <p>Choose plant-based options today</p>
+                        </div>
+                        <div class="task-points">+20</div>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-info">
+                            <h4>Turn off unused lights</h4>
+                            <p>Save energy when leaving rooms</p>
+                        </div>
+                        <div class="task-points">+10</div>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox" checked>
+                        <div class="task-info">
+                            <h4>Recycle properly</h4>
+                            <p>Sort your waste correctly</p>
+                        </div>
+                        <div class="task-points">+15</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="leaderboard">
+                <div class="leaderboard-header">
+                    <h2>Community Leaderboard</h2>
+                    <div class="leaderboard-tabs">
+                        <button class="tab-btn active">Friends</button>
+                        <button class="tab-btn">Global</button>
+                        <button class="tab-btn">Local</button>
+                    </div>
+                </div>
+                
+                <ul class="leaderboard-list">
+                    <li class="leaderboard-item">
+                        <div class="rank rank-1">1</div>
+                        <div class="user-info">
+                            <div class="user-avatar-sm">YT</div>
+                            <span>EcoMaster</span>
+                        </div>
+                        <div class="user-points">3,450</div>
+                    </li>
+                    <li class="leaderboard-item">
+                        <div class="rank rank-2">2</div>
+                        <div class="user-info">
+                            <div class="user-avatar-sm">GW</div>
+                            <span>You</span>
+                        </div>
+                        <div class="user-points">1,245</div>
+                    </li>
+                    <li class="leaderboard-item">
+                        <div class="rank rank-3">3</div>
+                        <div class="user-info">
+                            <div class="user-avatar-sm">GP</div>
+                            <span>GreenPal</span>
+                        </div>
+                        <div class="user-points">1,120</div>
+                    </li>
+                    <li class="leaderboard-item">
+                        <div class="rank">4</div>
+                        <div class="user-info">
+                            <div class="user-avatar-sm">EF</div>
+                            <span>EcoFriend</span>
+                        </div>
+                        <div class="user-points">980</div>
+                    </li>
+                    <li class="leaderboard-item">
+                        <div class="rank">5</div>
+                        <div class="user-info">
+                            <div class="user-avatar-sm">NS</div>
+                            <span>NatureSaver</span>
+                        </div>
+                        <div class="user-points">875</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="leaderboard">
+                <div class="leaderboard-header">
+                    <h2>Active Community Challenges</h2>
+                    <button class="join-btn" id="view-all-challenges">View All</button>
+                </div>
+                
+                <div class="challenges-container">
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="challenge-details">
+                            <h3>Meat-Free Week</h3>
+                            <p>Go vegetarian for 7 days and reduce your carbon footprint</p>
+                            <div class="challenge-stats">
+                                <div class="participants">
+                                    <div class="participant-avatars">
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                    </div>
+                                    <span>245 joined</span>
+                                </div>
+                                <span>3 days left</span>
+                            </div>
+                            <button class="join-btn challenge-join" data-challenge="meat-free">Join Challenge</button>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <i class="fas fa-bicycle"></i>
+                        </div>
+                        <div class="challenge-details">
+                            <h3>Green Commute Month</h3>
+                            <p>Use sustainable transport for 30 days</p>
+                            <div class="challenge-stats">
+                                <div class="participants">
+                                    <div class="participant-avatars">
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                    </div>
+                                    <span>189 joined</span>
+                                </div>
+                                <span>12 days left</span>
+                            </div>
+                            <button class="join-btn challenge-join" data-challenge="green-commute">Join Challenge</button>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="challenge-details">
+                            <h3>Plastic-Free July</h3>
+                            <p>Avoid single-use plastics all month</p>
+                            <div class="challenge-stats">
+                                <div class="participants">
+                                    <div class="participant-avatars">
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                        <div class="participant-avatar"></div>
+                                    </div>
+                                    <span>512 joined</span>
+                                </div>
+                                <span>New!</span>
+                            </div>
+                            <button class="join-btn challenge-join" data-challenge="plastic-free">Join Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Carbon Calculator Section -->
+<div class="leaderboard" id="carbon-calculator">
+    <div class="leaderboard-header">
+        <h2>Carbon Footprint Calculator</h2>
+    </div>
+    
+    <div class="calculator-container">
+        <div class="calculator-input">
+            <label for="transport-miles">Miles driven this week:</label>
+            <input type="number" id="transport-miles" placeholder="Enter miles" class="carbon-input">
+            <div class="input-feedback" id="transport-feedback"></div>
+        </div>
+        
+        <div class="calculator-input">
+            <label for="electricity-usage">Electricity used (kWh):</label>
+            <input type="number" id="electricity-usage" placeholder="Enter kWh" class="carbon-input">
+            <div class="input-feedback" id="electricity-feedback"></div>
+        </div>
+        
+        <div class="calculator-input">
+            <label for="meals-consumed">Meat meals consumed this week:</label>
+            <input type="number" id="meals-consumed" placeholder="Enter number" class="carbon-input">
+            <div class="input-feedback" id="meals-feedback"></div>
+        </div>
+        
+        <div id="carbon-result" style="margin-top: 1.5rem; padding: 1rem; background-color: var(--light); border-radius: 10px;">
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Your Carbon Footprint</h3>
+            <p id="carbon-total" style="font-size: 1.2rem; font-weight: bold; color: var(--dark);">Enter your data above</p>
+            <p id="carbon-comparison" style="margin-top: 0.5rem;"></p>
+            <div class="progress-container" style="margin: 1rem 0;">
+                <div id="carbon-progress" class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <p id="carbon-tips" style="font-style: italic;"></p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Add these styles to your existing CSS */
+    .carbon-input {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+    }
+    
+    .carbon-input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    }
+    
+    .input-feedback {
+        height: 20px;
+        font-size: 0.8rem;
+        color: var(--primary);
+        margin-top: 0.2rem;
+    }
+    
+    #carbon-result {
+        transition: all 0.5s ease;
+    }
+</style>
+
+<script>
+    // Real-time Carbon Calculator
+    const carbonInputs = document.querySelectorAll('.carbon-input');
+    const averageCO2 = 150; // kg per week average
+    
+    // Function to calculate carbon footprint
+    function calculateCarbonFootprint() {
+        // Get input values
+        const miles = parseFloat(document.getElementById('transport-miles').value) || 0;
+        const electricity = parseFloat(document.getElementById('electricity-usage').value) || 0;
+        const meals = parseFloat(document.getElementById('meals-consumed').value) || 0;
+        
+        // Calculate carbon (simplified calculations for demo)
+        const transportCO2 = miles * 0.4; // approx 0.4kg CO2 per mile
+        const electricityCO2 = electricity * 0.5; // approx 0.5kg CO2 per kWh
+        const foodCO2 = meals * 2.5; // approx 2.5kg CO2 per meat meal
+        
+        const totalCO2 = transportCO2 + electricityCO2 + foodCO2;
+        
+        // Update input feedback
+        document.getElementById('transport-feedback').textContent = 
+            miles > 0 ? `≈ ${transportCO2.toFixed(1)} kg CO₂` : '';
+        document.getElementById('electricity-feedback').textContent = 
+            electricity > 0 ? `≈ ${electricityCO2.toFixed(1)} kg CO₂` : '';
+        document.getElementById('meals-feedback').textContent = 
+            meals > 0 ? `≈ ${foodCO2.toFixed(1)} kg CO₂` : '';
+        
+        // Only show results if at least one field has value
+        if (miles > 0 || electricity > 0 || meals > 0) {
+            // Display results
+            document.getElementById('carbon-total').textContent = 
+                `Total: ${totalCO2.toFixed(1)} kg CO₂ this week`;
+            
+            // Compare to average
+            const percentage = Math.min(100, (totalCO2 / averageCO2) * 100);
+            const comparisonText = 
+                totalCO2 < averageCO2 * 0.7 ? "Great job! You're well below average!" :
+                totalCO2 < averageCO2 ? "Good! You're below the average." :
+                totalCO2 < averageCO2 * 1.3 ? "You're about average." :
+                "You're above average - let's find ways to reduce!";
+            
+            document.getElementById('carbon-comparison').textContent = 
+                `${comparisonText} (Average: ${averageCO2} kg/week)`;
+            
+            // Set progress bar (inverse so lower is better)
+            document.getElementById('carbon-progress').style.width = `${percentage}%`;
+            document.getElementById('carbon-progress').style.backgroundColor = 
+                percentage < 70 ? "#4CAF50" : 
+                percentage < 100 ? "#FFC107" : "#F44336";
+            
+            // Provide tips
+            let tips = [];
+            if (transportCO2 > electricityCO2 && transportCO2 > foodCO2) {
+                tips.push("🚗 Try walking, biking, or public transport to reduce transport emissions");
+            }
+            if (electricityCO2 > transportCO2 && electricityCO2 > foodCO2) {
+                tips.push("💡 Switch to LED bulbs and unplug devices when not in use");
+            }
+            if (foodCO2 > transportCO2 && foodCO2 > electricityCO2) {
+                tips.push("🌱 Try meat-free meals a few times a week");
+            }
+            if (totalCO2 > averageCO2) {
+                tips.push("♻️ Consider recycling more and reducing waste");
+            }
+            
+            document.getElementById('carbon-tips').textContent = 
+                tips.length > 0 ? "Tips to reduce: " + tips.join(" • ") : "You're doing great! Keep it up!";
+        } else {
+            // Reset if all fields are empty
+            document.getElementById('carbon-total').textContent = "Enter your data above";
+            document.getElementById('carbon-comparison').textContent = "";
+            document.getElementById('carbon-progress').style.width = "0%";
+            document.getElementById('carbon-tips').textContent = "";
+        }
+        
+        // Add to carbon saved in dashboard (just for demo)
+        if (miles > 0 || electricity > 0 || meals > 0) {
+            const carbonSavedElement = document.querySelector('.dashboard-card:nth-child(2) .eco-points');
+            const currentSaved = parseFloat(carbonSavedElement.textContent) || 0;
+            if (currentSaved < 150) { // Cap at 150 for demo
+                carbonSavedElement.textContent = `${Math.min(150, currentSaved + 1)} kg`;
+            }
+        }
+    }
+    
+    // Add event listeners for real-time calculation
+    carbonInputs.forEach(input => {
+        input.addEventListener('input', calculateCarbonFootprint);
+    });
+    
+    // Initialize calculator
+    calculateCarbonFootprint();
+</script>
+    <!-- Modal for challenge details -->
+    <div class="modal" id="challenge-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-challenge-title">Challenge Title</h2>
+            <div id="modal-challenge-image" class="challenge-image" style="margin: 1rem 0;"></div>
+            <p id="modal-challenge-description">Challenge description goes here</p>
+            <div class="challenge-stats" style="margin: 1rem 0;">
+                <div class="participants">
+                    <div class="participant-avatars">
+                        <div class="participant-avatar"></div>
+                        <div class="participant-avatar"></div>
+                        <div class="participant-avatar"></div>
+                    </div>
+                    <span id="modal-participants">245 joined</span>
+                </div>
+                <span id="modal-time-left">3 days left</span>
+            </div>
+            <button class="join-btn" id="modal-join-btn" style="width: 100%;">Join Challenge</button>
+        </div>
+    </div>
+    
+    <!-- Modal for badges -->
+    <div class="modal" id="badges-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Your Badges</h2>
+            <div class="badges-container" style="justify-content: center; margin: 2rem 0;">
+                <div class="badge" data-tooltip="Plastic Free Week"><i class="fas fa-ban"></i></div>
+                <div class="badge" data-tooltip="Green Commuter"><i class="fas fa-bicycle"></i></div>
+                <div class="badge" data-tooltip="Energy Saver"><i class="fas fa-bolt"></i></div>
+                <div class="badge" data-tooltip="Water Guardian"><i class="fas fa-tint"></i></div>
+                <div class="badge" data-tooltip="Recycling Hero"><i class="fas fa-recycle"></i></div>
+                <div class="badge" data-tooltip="Eco Warrior"><i class="fas fa-shield-alt"></i></div>
+                <div class="badge" data-tooltip="Tree Hugger"><i class="fas fa-tree"></i></div>
+                <div class="badge" data-tooltip="30-Day Streak"><i class="fas fa-fire"></i></div>
+            </div>
+            <p style="text-align: center;">Complete more challenges to unlock additional badges!</p>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQ</a>
+        </div>
+        <p>© 2023 EcoQuest. All rights reserved.</p>
+        <p>Together we've planted 12,456 trees and saved 245,678 kg of CO₂!</p>
+    </footer>
+    
+    <script>
+        // Plant growth system
+        const checkboxes = document.querySelectorAll('.task-checkbox');
+        const plantEmoji = document.getElementById('plant-emoji');
+        const plantName = document.getElementById('plant-name');
+        const tasksMessage = document.getElementById('tasks-completed-message');
+        
+        // Plant growth stages using emojis
+        const plantStages = [
+            { emoji: "🌱", name: "Sprouty", size: "80px", tasksNeeded: 0 },
+            { emoji: "🌿", name: "Leafy", size: "100px", tasksNeeded: 1 },
+            { emoji: "🍀", name: "Buddy", size: "120px", tasksNeeded: 2 },
+            { emoji: "🌷", name: "Flora", size: "140px", tasksNeeded: 3 },
+            { emoji: "🌳", name: "Captain Green", size: "160px", tasksNeeded: 4 }
+        ];
+        
+        // Update plant display
+        function updatePlant() {
+            const checkedCount = document.querySelectorAll('.task-checkbox:checked').length;
+            const totalTasks = document.querySelectorAll('.task-checkbox').length;
+            
+            // Determine plant stage
+            let currentStage = 0;
+            for (let i = plantStages.length - 1; i >= 0; i--) {
+                if (checkedCount >= plantStages[i].tasksNeeded) {
+                    currentStage = i;
+                    break;
+                }
+            }
+            
+            // Update plant display
+            plantEmoji.textContent = plantStages[currentStage].emoji;
+            plantEmoji.style.fontSize = plantStages[currentStage].size;
+            plantName.textContent = plantStages[currentStage].name;
+            
+            // Update message
+            if (currentStage < plantStages.length - 1) {
+                const nextStage = currentStage + 1;
+                const tasksNeeded = plantStages[nextStage].tasksNeeded - checkedCount;
+                tasksMessage.textContent = `Complete ${tasksNeeded} more to grow your plant to ${plantStages[nextStage].name}!`;
+            } else {
+                tasksMessage.textContent = "Your plant is fully grown! Keep completing tasks to maintain it!";
+            }
+            
+            // Add growing animation
+            plantEmoji.classList.add('growing');
+            setTimeout(() => {
+                plantEmoji.classList.remove('growing');
+            }, 500);
+            
+            // Special celebration for final stage
+            if (currentStage === plantStages.length - 1 && checkedCount === plantStages[currentStage].tasksNeeded) {
+                setTimeout(() => {
+                    alert("🎉 Amazing! Your plant has reached full growth! Keep going to maintain it!");
+                }, 600);
+            }
+        }
+        
+        // Initialize plant
+        updatePlant();
+        
+        // Add event listeners to checkboxes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updatePlant);
+        });
+        
+        // Modal functionality
+        const challengeModal = document.getElementById('challenge-modal');
+        const badgesModal = document.getElementById('badges-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const viewBadgesBtn = document.getElementById('view-badges');
+        const viewAllChallengesBtn = document.getElementById('view-all-challenges');
+        const challengeJoinButtons = document.querySelectorAll('.challenge-join');
+        
+        // Challenge data
+        const challenges = {
+            "meat-free": {
+                title: "Meat-Free Week",
+                icon: '<i class="fas fa-utensils"></i>',
+                description: "Commit to a vegetarian diet for 7 days. Reducing meat consumption is one of the most effective ways to lower your carbon footprint. Animal agriculture is responsible for significant greenhouse gas emissions, deforestation, and water usage.",
+                participants: "245",
+                timeLeft: "3 days left"
+            },
+            "green-commute": {
+                title: "Green Commute Month",
+                icon: '<i class="fas fa-bicycle"></i>',
+                description: "Use sustainable transportation for 30 days. Choose walking, biking, public transit, or carpooling instead of driving alone. Transportation accounts for nearly 30% of greenhouse gas emissions in many countries.",
+                participants: "189",
+                timeLeft: "12 days left"
+            },
+            "plastic-free": {
+                title: "Plastic-Free July",
+                icon: '<i class="fas fa-shopping-bag"></i>',
+                description: "Avoid single-use plastics all month. Bring your own bags, bottles, and containers. Plastic pollution harms marine life and takes hundreds of years to decompose. Microplastics are now found throughout the food chain.",
+                participants: "512",
+                timeLeft: "New challenge!"
+            }
+        };
+        
+        // Open challenge modal when join button is clicked
+        challengeJoinButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const challengeId = this.getAttribute('data-challenge');
+                const challenge = challenges[challengeId];
+                
+                document.getElementById('modal-challenge-title').textContent = challenge.title;
+                document.getElementById('modal-challenge-image').innerHTML = challenge.icon;
+                document.getElementById('modal-challenge-description').textContent = challenge.description;
+                document.getElementById('modal-participants').textContent = challenge.participants + " joined";
+                document.getElementById('modal-time-left').textContent = challenge.timeLeft;
+                
+                // Update join button if already joined
+                if (this.classList.contains('joined')) {
+                    document.getElementById('modal-join-btn').textContent = "Leave Challenge";
+                    document.getElementById('modal-join-btn').classList.add('joined');
+                } else {
+                    document.getElementById('modal-join-btn').textContent = "Join Challenge";
+                    document.getElementById('modal-join-btn').classList.remove('joined');
+                }
+                
+                // Set data attribute for modal join button
+                document.getElementById('modal-join-btn').setAttribute('data-challenge', challengeId);
+                
+                challengeModal.style.display = 'flex';
+            });
+        });
+        
+        // Join challenge from modal
+        document.getElementById('modal-join-btn').addEventListener('click', function() {
+            const challengeId = this.getAttribute('data-challenge');
+            const joinButtons = document.querySelectorAll(`.challenge-join[data-challenge="${challengeId}"]`);
+            
+            if (this.classList.contains('joined')) {
+                // Leave challenge
+                this.classList.remove('joined');
+                this.textContent = "Join Challenge";
+                joinButtons.forEach(btn => {
+                    btn.classList.remove('joined');
+                    btn.textContent = "Join Challenge";
+                });
+                alert(`You've left the ${challenges[challengeId].title} challenge`);
+            } else {
+                // Join challenge
+                this.classList.add('joined');
+                this.textContent = "Leave Challenge";
+                joinButtons.forEach(btn => {
+                    btn.classList.add('joined');
+                    btn.textContent = "Joined!";
+                });
+                alert(`You've joined the ${challenges[challengeId].title} challenge!`);
+            }
+            
+            challengeModal.style.display = 'none';
+        });
+        
+        // View all badges
+        viewBadgesBtn.addEventListener('click', function() {
+            badgesModal.style.display = 'flex';
+        });
+        
+        // View all challenges
+        viewAllChallengesBtn.addEventListener('click', function() {
+            alert("This would show all available challenges in a real application!");
+        });
+        
+        // Close modals
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                challengeModal.style.display = 'none';
+                badgesModal.style.display = 'none';
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === challengeModal) {
+                challengeModal.style.display = 'none';
+            }
+            if (event.target === badgesModal) {
+                badgesModal.style.display = 'none';
+            }
+        });
+        
+        // Sidebar navigation
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu li a');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        
+        function setActiveLink(links, clickedLink) {
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+            clickedLink.classList.add('active');
+        }
+        
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                setActiveLink(sidebarLinks, this);
+                
+                // In a real app, this would load different content
+                alert(`Loading ${this.textContent} section...`);
+            });
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                setActiveLink(navLinks, this);
+                
+                // In a real app, this would load different content
+                alert(`Loading ${this.textContent} section...`);
+            });
+        });
+        
+        // Simulate some already completed tasks
+        window.addEventListener('load', () => {
+            // Randomly check some tasks for demo purposes
+            const randomChecks = Math.floor(Math.random() * 3);
+            const checkboxes = document.querySelectorAll('.task-checkbox:not(:checked)');
+            
+            for (let i = 0; i < randomChecks && i < checkboxes.length; i++) {
+                checkboxes[i].checked = true;
+            }
+            
+            updatePlant();
+        });
+    </script>
+</body>
+</html>
