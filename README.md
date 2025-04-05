@@ -1,5 +1,5 @@
 # AssetMerkle123
-EcoQuest is a gamified sustainability platform that embodies the principles of open innovation by creating an ecosystem where individuals, communities, and organizations collaborate to drive environmental change. Our platform fits perfectly within the Open Innovation track through several key aspects:
+EcoQuest is a gamified sustainability platform that embodies the principles of open innovation by creating an ecosystem where individuals, communities, and organizations collaborate to drive environmental change. Our platform fits perfectly within the Open Innovation track through several key aspects:-
 
  1. *Collaborative Problem-Solving*
 EcoQuest harnesses collective intelligence to address environmental challenges:
