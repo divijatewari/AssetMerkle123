@@ -577,10 +577,6 @@
             background-color: var(--dark);
         }
         
-        .joined {
-            background-color: var(--dark);
-        }
-        
         footer {
             background-color: var(--primary);
             color: var(--white);
@@ -614,40 +610,6 @@
         
         .growing {
             animation: grow 0.5s ease;
-        }
-        
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
         }
         
         /* Responsive design */
@@ -694,10 +656,10 @@
         <nav>
             <ul>
                 <li><a href="#" class="active">Home</a></li>
-                <li><a href="#" id="nav-challenges">Challenges</a></li>
-                <li><a href="#" id="nav-community">Community</a></li>
-                <li><a href="#" id="nav-learn">Learn</a></li>
-                <li><a href="#" id="nav-marketplace">Marketplace</a></li>
+                <li><a href="#">Challenges</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Learn</a></li>
+                <li><a href="#">Marketplace</a></li>
             </ul>
         </nav>
         <div class="user-profile">
@@ -709,15 +671,15 @@
     <div class="container">
         <aside class="sidebar">
             <ul class="sidebar-menu">
-                <li><a href="#" class="active" id="side-dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="#" id="side-targets"><i class="fas fa-tasks"></i> Daily Targets</a></li>
-                <li><a href="#" id="side-carbon"><i class="fas fa-leaf"></i> Carbon Tracker</a></li>
-                <li><a href="#" id="side-leaderboard"><i class="fas fa-trophy"></i> Leaderboard</a></li>
-                <li><a href="#" id="side-achievements"><i class="fas fa-medal"></i> Achievements</a></li>
-                <li><a href="#" id="side-community"><i class="fas fa-users"></i> Community</a></li>
-                <li><a href="#" id="side-tips"><i class="fas fa-book"></i> Eco Tips</a></li>
-                <li><a href="#" id="side-marketplace"><i class="fas fa-store"></i> Marketplace</a></li>
-                <li><a href="#" id="side-settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> Daily Targets</a></li>
+                <li><a href="#"><i class="fas fa-leaf"></i> Carbon Tracker</a></li>
+                <li><a href="#"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                <li><a href="#"><i class="fas fa-medal"></i> Achievements</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Eco Tips</a></li>
+                <li><a href="#"><i class="fas fa-store"></i> Marketplace</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </aside>
         
@@ -775,7 +737,7 @@
                         <div class="badge" data-tooltip="Water Guardian"><i class="fas fa-tint"></i></div>
                     </div>
                     <p>You've earned 4 badges so far!</p>
-                    <button style="width: 100%; margin-top: 1rem;" class="join-btn" id="view-badges">View All</button>
+                    <button style="width: 100%; margin-top: 1rem;" class="join-btn">View All</button>
                 </div>
             </div>
             
@@ -894,7 +856,7 @@
             <div class="leaderboard">
                 <div class="leaderboard-header">
                     <h2>Active Community Challenges</h2>
-                    <button class="join-btn" id="view-all-challenges">View All</button>
+                    <button class="join-btn">View All</button>
                 </div>
                 
                 <div class="challenges-container">
@@ -916,7 +878,7 @@
                                 </div>
                                 <span>3 days left</span>
                             </div>
-                            <button class="join-btn challenge-join" data-challenge="meat-free">Join Challenge</button>
+                            <button class="join-btn" style="width: 100%; margin-top: 1rem;">Join Challenge</button>
                         </div>
                     </div>
                     
@@ -938,7 +900,7 @@
                                 </div>
                                 <span>12 days left</span>
                             </div>
-                            <button class="join-btn challenge-join" data-challenge="green-commute">Join Challenge</button>
+                            <button class="join-btn" style="width: 100%; margin-top: 1rem;">Join Challenge</button>
                         </div>
                     </div>
                     
@@ -960,211 +922,12 @@
                                 </div>
                                 <span>New!</span>
                             </div>
-                            <button class="join-btn challenge-join" data-challenge="plastic-free">Join Challenge</button>
+                            <button class="join-btn" style="width: 100%; margin-top: 1rem;">Join Challenge</button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-    </div>
-    <!-- Carbon Calculator Section -->
-<div class="leaderboard" id="carbon-calculator">
-    <div class="leaderboard-header">
-        <h2>Carbon Footprint Calculator</h2>
-    </div>
-    
-    <div class="calculator-container">
-        <div class="calculator-input">
-            <label for="transport-miles">Miles driven this week:</label>
-            <input type="number" id="transport-miles" placeholder="Enter miles" class="carbon-input">
-            <div class="input-feedback" id="transport-feedback"></div>
-        </div>
-        
-        <div class="calculator-input">
-            <label for="electricity-usage">Electricity used (kWh):</label>
-            <input type="number" id="electricity-usage" placeholder="Enter kWh" class="carbon-input">
-            <div class="input-feedback" id="electricity-feedback"></div>
-        </div>
-        
-        <div class="calculator-input">
-            <label for="meals-consumed">Meat meals consumed this week:</label>
-            <input type="number" id="meals-consumed" placeholder="Enter number" class="carbon-input">
-            <div class="input-feedback" id="meals-feedback"></div>
-        </div>
-        
-        <div id="carbon-result" style="margin-top: 1.5rem; padding: 1rem; background-color: var(--light); border-radius: 10px;">
-            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Your Carbon Footprint</h3>
-            <p id="carbon-total" style="font-size: 1.2rem; font-weight: bold; color: var(--dark);">Enter your data above</p>
-            <p id="carbon-comparison" style="margin-top: 0.5rem;"></p>
-            <div class="progress-container" style="margin: 1rem 0;">
-                <div id="carbon-progress" class="progress-bar" style="width: 0%;"></div>
-            </div>
-            <p id="carbon-tips" style="font-style: italic;"></p>
-        </div>
-    </div>
-</div>
-
-<style>
-    /* Add these styles to your existing CSS */
-    .carbon-input {
-        padding: 0.5rem;
-        margin: 0.5rem 0;
-        width: 100%;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-family: 'Poppins', sans-serif;
-        transition: all 0.3s ease;
-    }
-    
-    .carbon-input:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-    }
-    
-    .input-feedback {
-        height: 20px;
-        font-size: 0.8rem;
-        color: var(--primary);
-        margin-top: 0.2rem;
-    }
-    
-    #carbon-result {
-        transition: all 0.5s ease;
-    }
-</style>
-
-<script>
-    // Real-time Carbon Calculator
-    const carbonInputs = document.querySelectorAll('.carbon-input');
-    const averageCO2 = 150; // kg per week average
-    
-    // Function to calculate carbon footprint
-    function calculateCarbonFootprint() {
-        // Get input values
-        const miles = parseFloat(document.getElementById('transport-miles').value) || 0;
-        const electricity = parseFloat(document.getElementById('electricity-usage').value) || 0;
-        const meals = parseFloat(document.getElementById('meals-consumed').value) || 0;
-        
-        // Calculate carbon (simplified calculations for demo)
-        const transportCO2 = miles * 0.4; // approx 0.4kg CO2 per mile
-        const electricityCO2 = electricity * 0.5; // approx 0.5kg CO2 per kWh
-        const foodCO2 = meals * 2.5; // approx 2.5kg CO2 per meat meal
-        
-        const totalCO2 = transportCO2 + electricityCO2 + foodCO2;
-        
-        // Update input feedback
-        document.getElementById('transport-feedback').textContent = 
-            miles > 0 ? `≈ ${transportCO2.toFixed(1)} kg CO₂` : '';
-        document.getElementById('electricity-feedback').textContent = 
-            electricity > 0 ? `≈ ${electricityCO2.toFixed(1)} kg CO₂` : '';
-        document.getElementById('meals-feedback').textContent = 
-            meals > 0 ? `≈ ${foodCO2.toFixed(1)} kg CO₂` : '';
-        
-        // Only show results if at least one field has value
-        if (miles > 0 || electricity > 0 || meals > 0) {
-            // Display results
-            document.getElementById('carbon-total').textContent = 
-                `Total: ${totalCO2.toFixed(1)} kg CO₂ this week`;
-            
-            // Compare to average
-            const percentage = Math.min(100, (totalCO2 / averageCO2) * 100);
-            const comparisonText = 
-                totalCO2 < averageCO2 * 0.7 ? "Great job! You're well below average!" :
-                totalCO2 < averageCO2 ? "Good! You're below the average." :
-                totalCO2 < averageCO2 * 1.3 ? "You're about average." :
-                "You're above average - let's find ways to reduce!";
-            
-            document.getElementById('carbon-comparison').textContent = 
-                `${comparisonText} (Average: ${averageCO2} kg/week)`;
-            
-            // Set progress bar (inverse so lower is better)
-            document.getElementById('carbon-progress').style.width = `${percentage}%`;
-            document.getElementById('carbon-progress').style.backgroundColor = 
-                percentage < 70 ? "#4CAF50" : 
-                percentage < 100 ? "#FFC107" : "#F44336";
-            
-            // Provide tips
-            let tips = [];
-            if (transportCO2 > electricityCO2 && transportCO2 > foodCO2) {
-                tips.push("🚗 Try walking, biking, or public transport to reduce transport emissions");
-            }
-            if (electricityCO2 > transportCO2 && electricityCO2 > foodCO2) {
-                tips.push("💡 Switch to LED bulbs and unplug devices when not in use");
-            }
-            if (foodCO2 > transportCO2 && foodCO2 > electricityCO2) {
-                tips.push("🌱 Try meat-free meals a few times a week");
-            }
-            if (totalCO2 > averageCO2) {
-                tips.push("♻️ Consider recycling more and reducing waste");
-            }
-            
-            document.getElementById('carbon-tips').textContent = 
-                tips.length > 0 ? "Tips to reduce: " + tips.join(" • ") : "You're doing great! Keep it up!";
-        } else {
-            // Reset if all fields are empty
-            document.getElementById('carbon-total').textContent = "Enter your data above";
-            document.getElementById('carbon-comparison').textContent = "";
-            document.getElementById('carbon-progress').style.width = "0%";
-            document.getElementById('carbon-tips').textContent = "";
-        }
-        
-        // Add to carbon saved in dashboard (just for demo)
-        if (miles > 0 || electricity > 0 || meals > 0) {
-            const carbonSavedElement = document.querySelector('.dashboard-card:nth-child(2) .eco-points');
-            const currentSaved = parseFloat(carbonSavedElement.textContent) || 0;
-            if (currentSaved < 150) { // Cap at 150 for demo
-                carbonSavedElement.textContent = `${Math.min(150, currentSaved + 1)} kg`;
-            }
-        }
-    }
-    
-    // Add event listeners for real-time calculation
-    carbonInputs.forEach(input => {
-        input.addEventListener('input', calculateCarbonFootprint);
-    });
-    
-    // Initialize calculator
-    calculateCarbonFootprint();
-</script>
-    <!-- Modal for challenge details -->
-    <div class="modal" id="challenge-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="modal-challenge-title">Challenge Title</h2>
-            <div id="modal-challenge-image" class="challenge-image" style="margin: 1rem 0;"></div>
-            <p id="modal-challenge-description">Challenge description goes here</p>
-            <div class="challenge-stats" style="margin: 1rem 0;">
-                <div class="participants">
-                    <div class="participant-avatars">
-                        <div class="participant-avatar"></div>
-                        <div class="participant-avatar"></div>
-                        <div class="participant-avatar"></div>
-                    </div>
-                    <span id="modal-participants">245 joined</span>
-                </div>
-                <span id="modal-time-left">3 days left</span>
-            </div>
-            <button class="join-btn" id="modal-join-btn" style="width: 100%;">Join Challenge</button>
-        </div>
-    </div>
-    
-    <!-- Modal for badges -->
-    <div class="modal" id="badges-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Your Badges</h2>
-            <div class="badges-container" style="justify-content: center; margin: 2rem 0;">
-                <div class="badge" data-tooltip="Plastic Free Week"><i class="fas fa-ban"></i></div>
-                <div class="badge" data-tooltip="Green Commuter"><i class="fas fa-bicycle"></i></div>
-                <div class="badge" data-tooltip="Energy Saver"><i class="fas fa-bolt"></i></div>
-                <div class="badge" data-tooltip="Water Guardian"><i class="fas fa-tint"></i></div>
-                <div class="badge" data-tooltip="Recycling Hero"><i class="fas fa-recycle"></i></div>
-                <div class="badge" data-tooltip="Eco Warrior"><i class="fas fa-shield-alt"></i></div>
-                <div class="badge" data-tooltip="Tree Hugger"><i class="fas fa-tree"></i></div>
-                <div class="badge" data-tooltip="30-Day Streak"><i class="fas fa-fire"></i></div>
-            </div>
-            <p style="text-align: center;">Complete more challenges to unlock additional badges!</p>
-        </div>
     </div>
     
     <footer>
@@ -1175,7 +938,7 @@
             <a href="#">Terms of Service</a>
             <a href="#">FAQ</a>
         </div>
-        <p>© 2023 EcoQuest. All rights reserved.</p>
+        <p>©️ 2023 EcoQuest. All rights reserved.</p>
         <p>Together we've planted 12,456 trees and saved 245,678 kg of CO₂!</p>
     </footer>
     
@@ -1243,154 +1006,6 @@
         // Add event listeners to checkboxes
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', updatePlant);
-        });
-        
-        // Modal functionality
-        const challengeModal = document.getElementById('challenge-modal');
-        const badgesModal = document.getElementById('badges-modal');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
-        const viewBadgesBtn = document.getElementById('view-badges');
-        const viewAllChallengesBtn = document.getElementById('view-all-challenges');
-        const challengeJoinButtons = document.querySelectorAll('.challenge-join');
-        
-        // Challenge data
-        const challenges = {
-            "meat-free": {
-                title: "Meat-Free Week",
-                icon: '<i class="fas fa-utensils"></i>',
-                description: "Commit to a vegetarian diet for 7 days. Reducing meat consumption is one of the most effective ways to lower your carbon footprint. Animal agriculture is responsible for significant greenhouse gas emissions, deforestation, and water usage.",
-                participants: "245",
-                timeLeft: "3 days left"
-            },
-            "green-commute": {
-                title: "Green Commute Month",
-                icon: '<i class="fas fa-bicycle"></i>',
-                description: "Use sustainable transportation for 30 days. Choose walking, biking, public transit, or carpooling instead of driving alone. Transportation accounts for nearly 30% of greenhouse gas emissions in many countries.",
-                participants: "189",
-                timeLeft: "12 days left"
-            },
-            "plastic-free": {
-                title: "Plastic-Free July",
-                icon: '<i class="fas fa-shopping-bag"></i>',
-                description: "Avoid single-use plastics all month. Bring your own bags, bottles, and containers. Plastic pollution harms marine life and takes hundreds of years to decompose. Microplastics are now found throughout the food chain.",
-                participants: "512",
-                timeLeft: "New challenge!"
-            }
-        };
-        
-        // Open challenge modal when join button is clicked
-        challengeJoinButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const challengeId = this.getAttribute('data-challenge');
-                const challenge = challenges[challengeId];
-                
-                document.getElementById('modal-challenge-title').textContent = challenge.title;
-                document.getElementById('modal-challenge-image').innerHTML = challenge.icon;
-                document.getElementById('modal-challenge-description').textContent = challenge.description;
-                document.getElementById('modal-participants').textContent = challenge.participants + " joined";
-                document.getElementById('modal-time-left').textContent = challenge.timeLeft;
-                
-                // Update join button if already joined
-                if (this.classList.contains('joined')) {
-                    document.getElementById('modal-join-btn').textContent = "Leave Challenge";
-                    document.getElementById('modal-join-btn').classList.add('joined');
-                } else {
-                    document.getElementById('modal-join-btn').textContent = "Join Challenge";
-                    document.getElementById('modal-join-btn').classList.remove('joined');
-                }
-                
-                // Set data attribute for modal join button
-                document.getElementById('modal-join-btn').setAttribute('data-challenge', challengeId);
-                
-                challengeModal.style.display = 'flex';
-            });
-        });
-        
-        // Join challenge from modal
-        document.getElementById('modal-join-btn').addEventListener('click', function() {
-            const challengeId = this.getAttribute('data-challenge');
-            const joinButtons = document.querySelectorAll(`.challenge-join[data-challenge="${challengeId}"]`);
-            
-            if (this.classList.contains('joined')) {
-                // Leave challenge
-                this.classList.remove('joined');
-                this.textContent = "Join Challenge";
-                joinButtons.forEach(btn => {
-                    btn.classList.remove('joined');
-                    btn.textContent = "Join Challenge";
-                });
-                alert(`You've left the ${challenges[challengeId].title} challenge`);
-            } else {
-                // Join challenge
-                this.classList.add('joined');
-                this.textContent = "Leave Challenge";
-                joinButtons.forEach(btn => {
-                    btn.classList.add('joined');
-                    btn.textContent = "Joined!";
-                });
-                alert(`You've joined the ${challenges[challengeId].title} challenge!`);
-            }
-            
-            challengeModal.style.display = 'none';
-        });
-        
-        // View all badges
-        viewBadgesBtn.addEventListener('click', function() {
-            badgesModal.style.display = 'flex';
-        });
-        
-        // View all challenges
-        viewAllChallengesBtn.addEventListener('click', function() {
-            alert("This would show all available challenges in a real application!");
-        });
-        
-        // Close modals
-        closeModalButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                challengeModal.style.display = 'none';
-                badgesModal.style.display = 'none';
-            });
-        });
-        
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === challengeModal) {
-                challengeModal.style.display = 'none';
-            }
-            if (event.target === badgesModal) {
-                badgesModal.style.display = 'none';
-            }
-        });
-        
-        // Sidebar navigation
-        const sidebarLinks = document.querySelectorAll('.sidebar-menu li a');
-        const navLinks = document.querySelectorAll('nav ul li a');
-        
-        function setActiveLink(links, clickedLink) {
-            links.forEach(link => {
-                link.classList.remove('active');
-            });
-            clickedLink.classList.add('active');
-        }
-        
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                setActiveLink(sidebarLinks, this);
-                
-                // In a real app, this would load different content
-                alert(`Loading ${this.textContent} section...`);
-            });
-        });
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                setActiveLink(navLinks, this);
-                
-                // In a real app, this would load different content
-                alert(`Loading ${this.textContent} section...`);
-            });
         });
         
         // Simulate some already completed tasks
